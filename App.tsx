@@ -16,6 +16,7 @@ import ChatGuide from './components/ChatGuide';
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [showTutorial, setShowTutorial] = useState(false);
+  const [inquiryCourse, setInquiryCourse] = useState('');
 
   useEffect(() => {
     // Check local storage for theme
@@ -64,9 +65,9 @@ export default function App() {
         <Identity />
         <Experience />
         <Profile />
-        <Program />
+        <Program onInquire={(course) => setInquiryCourse(course)} />
         <Process />
-        <Contact />
+        <Contact initialCourse={inquiryCourse} />
       </main>
 
       <Footer />

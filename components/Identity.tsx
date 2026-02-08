@@ -1,6 +1,6 @@
 import React from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
-import { Sparkles, Puzzle, Zap, Target, PenTool, RefreshCw } from 'lucide-react';
+import { Sparkles, Zap, Target, PenTool, RefreshCw, Waves, Link2, Lightbulb } from 'lucide-react';
 
 const Identity: React.FC = () => {
   const revealRef = useScrollReveal();
@@ -20,57 +20,66 @@ const Identity: React.FC = () => {
             Why FLOW~?
           </div>
           <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 dark:text-white leading-tight">
-            FLOW~는 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-600">다릅니다.</span>
+            흐름을 설계하고,<br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-600">성장을 연결합니다.</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto font-medium leading-relaxed">
-            복잡한 보고 체계도, 형식적인 절차도 없습니다.<br/>
-            <strong className="text-slate-900 dark:text-white">오직 당신의 조직을 위한 최적의 해답</strong>만을 다이렉트로 제안합니다.
+            <span className="block mb-2 text-slate-500 dark:text-slate-400 font-bold">"교육을 넘어, 조직의 변화를 디자인합니다."</span>
+            <span className="block h-px w-20 bg-gray-300 mx-auto my-6"></span>
+            현업의 문제를 함께 고민하고 해결하며,<br className="hidden md:block" />
+            조직과 구성원이 몰입할 수 있는 <strong className="text-slate-900 dark:text-white bg-brand-cyan/10 px-1">최적의 흐름(Flow)</strong>을 만듭니다.
           </p>
         </div>
 
-        {/* Differentiation Points (Agility, Custom, Insight) */}
+        {/* Differentiation Points (Renamed & Enhanced) */}
         <div className="grid md:grid-cols-3 gap-8 mb-24" ref={revealRef2}>
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-xl relative overflow-hidden group">
+            {/* Card 1: FLOW DESIGN */}
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-cyan/10 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-brand-cyan/20"></div>
                 <div className="relative z-10">
-                    <div className="w-12 h-12 bg-brand-cyan text-white rounded-xl flex items-center justify-center mb-6 shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
-                        <Zap size={24} fill="currentColor" />
+                    <div className="w-16 h-16 bg-brand-cyan text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
+                        <Waves size={32} fill="currentColor" className="text-white" />
                     </div>
-                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-3">Agility</h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        대행사를 거치지 않습니다.<br/>
-                        대표가 직접 진단하고, 설계하고, 강의합니다.<br/>
-                        니즈 파악부터 실행까지 가장 빠르고 정확합니다.
+                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">FLOW DESIGN</h3>
+                    <p className="text-brand-cyan font-bold text-sm mb-4">최적의 흐름 설계</p>
+                    <div className="w-12 h-1.5 bg-brand-cyan mb-6 rounded-full"></div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                        "막힘없는 업무와 소통의 흐름을 설계합니다."<br/><br/>
+                        단절된 프로세스를 잇고 불필요한 장벽을 걷어냅니다. 조직과 개인이 온전히 일에 <strong>몰입(Flow)</strong>할 수 있는 환경을 만듭니다.
                     </p>
                 </div>
             </div>
 
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-xl relative overflow-hidden group">
+            {/* Card 2: GROWTH BRIDGE */}
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-purple-500/20"></div>
                 <div className="relative z-10">
-                    <div className="w-12 h-12 bg-purple-500 text-white rounded-xl flex items-center justify-center mb-6 shadow-lg -rotate-3 group-hover:rotate-0 transition-transform">
-                        <Puzzle size={24} fill="currentColor" />
+                    <div className="w-16 h-16 bg-purple-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg -rotate-3 group-hover:rotate-0 transition-transform">
+                        <Link2 size={32} className="text-white" strokeWidth={2.5} />
                     </div>
-                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-3">Custom-Fit</h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        기성품 교육을 납품하지 않습니다.<br/>
-                        조직의 산업군, 직무, 문화를 깊이 이해하고<br/>
-                        딱 맞는 '수제작(Crafted)' 프로그램을 설계합니다.
+                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">GROWTH BRIDGE</h3>
+                    <p className="text-purple-500 font-bold text-sm mb-4">성장의 연결고리</p>
+                    <div className="w-12 h-1.5 bg-purple-500 mb-6 rounded-full"></div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                        "현업의 이슈를 해결하며 성장을 연결합니다."<br/><br/>
+                        문제를 상상하고, 실행하고, 확장합니다. 업무 환경을 개선하여 <strong>조직의 목표 달성이 구성원의 구체적인 성장</strong>으로 이어지도록 지원합니다.
                     </p>
                 </div>
             </div>
 
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-xl relative overflow-hidden group">
+            {/* Card 3: REAL SOLUTION */}
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-yellow-500/20"></div>
                 <div className="relative z-10">
-                    <div className="w-12 h-12 bg-yellow-500 text-white rounded-xl flex items-center justify-center mb-6 shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
-                        <Sparkles size={24} fill="currentColor" />
+                    <div className="w-16 h-16 bg-yellow-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
+                        <Lightbulb size={32} className="text-white fill-white/20" strokeWidth={2.5} />
                     </div>
-                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-3">Real Insight</h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        단순 지식 전달자가 아닙니다.<br/>
-                        1,400명 조직의 HRD 총괄 경험과<br/>
-                        AI 코디네이터로서의 실무 통찰을 전합니다.
+                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">REAL SOLUTION</h3>
+                    <p className="text-yellow-500 font-bold text-sm mb-4">현장 중심 솔루션</p>
+                    <div className="w-12 h-1.5 bg-yellow-500 mb-6 rounded-full"></div>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                        "이론가가 아닌, 현장의 문제 해결사입니다."<br/><br/>
+                        1,400명 조직 HRD 총괄 경험을 가진 실무자입니다. 상황을 정확히 판단하고, <strong>현장에 즉시 적용 가능한 실질적인 해답</strong>을 제시합니다.
                     </p>
                 </div>
             </div>

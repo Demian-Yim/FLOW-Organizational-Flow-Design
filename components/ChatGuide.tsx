@@ -144,9 +144,9 @@ const ChatGuide: React.FC = () => {
             <div className="flex items-center gap-3 relative z-10">
               <div className="w-10 h-10 rounded-full bg-brand-cyan/20 border border-brand-cyan/50 overflow-hidden flex items-center justify-center relative">
                    <img 
-                    src="https://i.ibb.co/Xfd8fZ4G/image-5.png" 
+                    src="https://i.ibb.co/Gv1hBpD1/transformed-image-1761555212912.png" 
                     alt="AI Avatar" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform scale-110 pt-1"
                    />
                    <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-slate-900 rounded-full"></span>
               </div>
@@ -166,9 +166,9 @@ const ChatGuide: React.FC = () => {
                 {msg.role === 'model' && (
                    <div className="w-8 h-8 rounded-full bg-slate-800 border border-white/10 overflow-hidden flex-shrink-0 mt-1 flex items-center justify-center p-0.5">
                         <img 
-                            src="https://i.ibb.co/Xfd8fZ4G/image-5.png" 
+                            src="https://i.ibb.co/Gv1hBpD1/transformed-image-1761555212912.png" 
                             alt="AI" 
-                            className="w-full h-full object-cover rounded-full"
+                            className="w-full h-full object-cover transform scale-125 pt-1"
                         />
                    </div>
                 )}
@@ -190,9 +190,9 @@ const ChatGuide: React.FC = () => {
               <div className="flex gap-3">
                  <div className="w-8 h-8 rounded-full bg-slate-800 border border-white/10 overflow-hidden flex-shrink-0 mt-1 flex items-center justify-center p-0.5">
                         <img 
-                            src="https://i.ibb.co/Xfd8fZ4G/image-5.png" 
+                            src="https://i.ibb.co/Gv1hBpD1/transformed-image-1761555212912.png" 
                             alt="AI" 
-                            className="w-full h-full object-cover rounded-full"
+                            className="w-full h-full object-cover transform scale-125 pt-1"
                         />
                   </div>
                   <div className="bg-slate-800 p-3 rounded-2xl rounded-tl-none border border-white/10 flex items-center gap-2">
@@ -235,9 +235,9 @@ const ChatGuide: React.FC = () => {
                 <X size={28} className="text-white" /> 
             ) : (
                 <img 
-                    src="https://i.ibb.co/Xfd8fZ4G/image-5.png" 
+                    src="https://i.ibb.co/Gv1hBpD1/transformed-image-1761555212912.png" 
                     alt="Chat" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform scale-110 pt-1"
                 />
             )}
         </button>

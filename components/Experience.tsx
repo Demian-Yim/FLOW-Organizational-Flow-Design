@@ -32,8 +32,8 @@ const Experience: React.FC = () => {
     {
       id: 'Leadership',
       number: '03',
-      title: '리더십 아키텍트',
-      engTitle: 'LEADERSHIP ARCHITECT',
+      title: '리더십 스타일 진단',
+      engTitle: 'LEADERSHIP STYLE DIAGNOSIS',
       desc: '당신의 리더십 스타일을 입체적으로 진단하고, 3D 청사진으로 시각화합니다.',
       features: ['6가지 전략적 질문을 통한 유형 분석', '건축적 메타포를 활용한 3D 리포트', '개인 소장용 PDF 다운로드'],
       theme: 'white',

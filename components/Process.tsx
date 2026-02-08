@@ -14,7 +14,7 @@ const Process: React.FC = () => {
   ];
 
   return (
-    <section id="reference" className="py-24 bg-gray-100 dark:bg-slate-800 transition-colors duration-300 scroll-mt-20">
+    <section id="process" className="py-24 bg-gray-100 dark:bg-slate-800 transition-colors duration-300 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16" ref={revealRef}>
           <span className="text-brand-cyan font-bold tracking-wider uppercase">PROCESS</span>

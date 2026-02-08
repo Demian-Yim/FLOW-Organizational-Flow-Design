@@ -1,9 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { User, Phone, Mail, Loader2, Send, Calendar, MapPin, Users, HelpCircle, Building } from 'lucide-react';
 import { sendContactToSheet } from '../utils/googleApi';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  initialCourse?: string;
+}
+
+const Contact: React.FC<ContactProps> = ({ initialCourse }) => {
   const revealRef = useScrollReveal();
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,6 +24,13 @@ const Contact: React.FC = () => {
     location: '',
     issues: ''
   });
+
+  // Auto-fill course when initialCourse prop changes
+  useEffect(() => {
+    if (initialCourse) {
+        setFormData(prev => ({ ...prev, course: initialCourse }));
+    }
+  }, [initialCourse]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

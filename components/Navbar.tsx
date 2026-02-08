@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
       setIsScrolled(window.scrollY > 20);
 
       // Handle Active Section (Scrollspy)
-      const sections = ['home', 'intro', 'experience', 'profile', 'program', 'reference', 'contact'];
+      const sections = ['home', 'intro', 'experience', 'profile', 'program', 'process', 'contact'];
       const scrollPosition = window.scrollY + 100; // Offset for navbar height
 
       for (const section of sections) {
@@ -40,13 +40,13 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
   }, []);
 
   const navLinks = [
-    { name: 'HOME', href: '#home', id: 'home' },
-    { name: 'INTRO', href: '#intro', id: 'intro' },
-    { name: 'EXPERIENCE', href: '#experience', id: 'experience' },
-    { name: 'PROFILE', href: '#profile', id: 'profile' },
-    { name: 'PROGRAM', href: '#program', id: 'program' },
-    { name: 'REFERENCE', href: '#reference', id: 'reference' },
-    { name: 'CONTACT', href: '#contact', id: 'contact' },
+    { name: '홈', href: '#home', id: 'home' },
+    { name: '소개', href: '#intro', id: 'intro' },
+    { name: '진단', href: '#experience', id: 'experience' },
+    { name: '프로필', href: '#profile', id: 'profile' },
+    { name: '교육과정', href: '#program', id: 'program' },
+    { name: '프로세스', href: '#process', id: 'process' },
+    { name: '문의', href: '#contact', id: 'contact' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -86,9 +86,9 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+                  className={`px-3 py-2 rounded-md text-base font-bold transition-colors duration-300 ${
                     activeSection === link.id 
-                      ? 'text-brand-cyan font-bold' 
+                      ? 'text-brand-cyan' 
                       : 'text-slate-700 dark:text-gray-200 hover:text-brand-cyan'
                   }`}
                 >
@@ -139,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
               <a
                 key={link.name}
                 href={link.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                className={`block px-3 py-2 rounded-md text-base font-bold ${
                    activeSection === link.id 
                       ? 'text-brand-cyan bg-brand-cyan/10' 
                       : 'text-gray-800 dark:text-gray-200 hover:text-brand-cyan'

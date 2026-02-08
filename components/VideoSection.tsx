@@ -53,7 +53,7 @@ const VideoSection: React.FC = () => {
                             {/* Profile Image */}
                             <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 p-[2px]">
                                 <div className="w-full h-full rounded-full bg-white p-[2px] overflow-hidden">
-                                    <img src="https://i.ibb.co/dsLbNhBX/2019.png" className="w-full h-full object-cover" alt="profile"/>
+                                    <img src="https://i.ibb.co/Gv1hBpD1/transformed-image-1761555212912.png" className="w-full h-full object-cover transform scale-125 pt-1" alt="profile"/>
                                 </div>
                             </div>
                             <div>

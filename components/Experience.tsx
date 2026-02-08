@@ -52,7 +52,7 @@ const Experience: React.FC = () => {
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             데이터와 AI를 통해 나를 객관적으로 파악해보세요.<br/>
-            FLOW~가 직접 개발한 3가지 진단 도구를 무료로 체험하실 수 있습니다.
+            FLOW~가 개발한 3가지 진단 도구를 무료로 체험하실 수 있습니다.
           </p>
         </div>
 

@@ -66,7 +66,9 @@ function handleContact(data) {
     sheet.appendRow(['Timestamp', 'Company', 'Name', 'Contact', 'Email', 'Course', 'Schedule', 'Target/Count', 'Location', 'Issues']); 
   }
   
-  const timestamp = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+  const now = new Date();
+  const timestamp = now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+  const yymmdd = Utilities.formatDate(now, "Asia/Seoul", "yyMMdd");
   
   // 시트에 행 추가 (Expanded)
   sheet.appendRow([
@@ -83,7 +85,7 @@ function handleContact(data) {
   ]);
 
   // 이메일 발송
-  const subject = `[FLOW~ 문의] ${data.company} ${data.name}님의 새로운 문의`;
+  const subject = `[강의요청_${yymmdd}] ${data.company} ${data.name}님의 새로운 문의`;
   const body = `
     [FLOW~ 웹사이트 문의 접수]
     - 일시: ${timestamp}

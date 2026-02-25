@@ -1,6 +1,5 @@
 import React from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
-import { Linkedin, Facebook, Instagram } from 'lucide-react';
 
 const Process: React.FC = () => {
   const revealRef = useScrollReveal();
@@ -36,39 +35,6 @@ const Process: React.FC = () => {
                 </div>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Social Media</h3>
-            <div className="flex justify-center gap-6">
-                <a 
-                  href="https://www.linkedin.com/in/%EC%A0%95%ED%9B%88-%EC%9E%84-23ab981aa/" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="LinkedIn"
-                  className="w-12 h-12 rounded-full bg-[#0077b5] text-white flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
-                >
-                    <Linkedin size={24} />
-                </a>
-                <a 
-                  href="https://www.facebook.com/Rescuemyself7" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="Facebook"
-                  className="w-12 h-12 rounded-full bg-[#1877f2] text-white flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
-                >
-                    <Facebook size={24} />
-                </a>
-                <a 
-                  href="https://www.instagram.com/demian_yim/" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  aria-label="Instagram"
-                  className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
-                >
-                    <Instagram size={24} />
-                </a>
-            </div>
         </div>
       </div>
     </section>

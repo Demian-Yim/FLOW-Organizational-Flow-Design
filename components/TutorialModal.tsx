@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ChevronRight, Check, AlertCircle, Zap, TrendingUp } from 'lucide-react';
+import { X, ChevronRight, Check, AlertCircle, Zap, TrendingUp, Sparkles } from 'lucide-react';
 
 interface TutorialModalProps {
   onClose: () => void;
@@ -11,27 +11,35 @@ const TutorialModal: React.FC<TutorialModalProps> = ({ onClose }) => {
   const steps = [
     {
       id: 1,
-      icon: <AlertCircle className="w-8 h-8 text-red-400" />,
-      title: 'AI 시대의 리얼 이슈',
-      subtitle: '단순한 기능 도입으로 끝나선 안됩니다',
-      content: '많은 기업이 AI 툴을 도입하지만,\n정작 일하는 방식은 그대로입니다.\n"도구"가 아닌 "변화"에 집중해야 할 때입니다.',
-      color: 'bg-red-500',
+      icon: <Sparkles className="w-8 h-8 text-slate-700" />,
+      title: '환영합니다! 👋',
+      subtitle: 'FLOW~에 오신 것을 환영합니다',
+      content: 'AI 시대, 조직과 개인의 성장을 위한\n여정을 시작해보세요.\n\n이곳은 사람과 일의 흐름을\n디자인하는 공간입니다.',
+      color: 'bg-brand-pastelCyan',
     },
     {
       id: 2,
-      icon: <TrendingUp className="w-8 h-8 text-brand-cyan" />,
-      title: 'Reskilling & Upskilling',
-      subtitle: '직무 역량의 재정의',
-      content: 'AI가 대체할 영역과 리더가 맡아야 할 영역,\n그 경계에서 새로운 직무 역량이 필요합니다.\n조직의 Flow를 새롭게 설계하세요.',
-      color: 'bg-brand-cyan',
+      icon: <AlertCircle className="w-8 h-8 text-slate-700" />,
+      title: '진단 (Diagnosis)',
+      subtitle: '현재의 흐름을 파악하세요',
+      content: '단순한 AI 도입이 아닌,\n일하는 방식의 변화가 필요합니다.\n\n우리 조직의 AI 리터러시와\n리더십 현황을 진단해드립니다.',
+      color: 'bg-brand-pastelBlue',
     },
     {
       id: 3,
-      icon: <Zap className="w-8 h-8 text-yellow-400" />,
-      title: 'FLOW~ 솔루션',
-      subtitle: '사람과 기술의 연결 고리',
-      content: 'AI 실무부터 리더십, 소통 방식까지.\nFLOW~는 조직의 일의 흐름을 진단하고\n최적의 교육 로드맵을 제안합니다.',
-      color: 'bg-yellow-500',
+      icon: <TrendingUp className="w-8 h-8 text-slate-700" />,
+      title: '성장 (Growth)',
+      subtitle: '최적의 로드맵을 설계합니다',
+      content: '맞춤형 커리큘럼을 통해\n실무 역량(Reskilling)과\n리더십(Upskilling)을 강화하세요.',
+      color: 'bg-brand-pastelPurple',
+    },
+    {
+      id: 4,
+      icon: <Zap className="w-8 h-8 text-slate-700" />,
+      title: '변화 (Change)',
+      subtitle: '새로운 흐름을 만드세요',
+      content: 'FLOW~와 함께라면 가능합니다.\n\n지금 바로 문의하고\n조직의 변화를 시작해보세요!',
+      color: 'bg-brand-pastelPink',
     },
   ];
 

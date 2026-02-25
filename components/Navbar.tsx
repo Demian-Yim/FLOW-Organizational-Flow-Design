@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, BookOpen } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
       setIsScrolled(window.scrollY > 20);
 
       // Handle Active Section (Scrollspy)
-      const sections = ['home', 'intro', 'experience', 'profile', 'program', 'process', 'contact'];
+      const sections = ['home', 'intro', 'experience', 'profile', 'program', 'process', 'clients', 'contact'];
       const scrollPosition = window.scrollY + 100; // Offset for navbar height
 
       for (const section of sections) {
@@ -46,6 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
     { name: '프로필', href: '#profile', id: 'profile' },
     { name: '교육과정', href: '#program', id: 'program' },
     { name: '프로세스', href: '#process', id: 'process' },
+    { name: '고객사', href: '#clients', id: 'clients' },
     { name: '문의', href: '#contact', id: 'contact' },
   ];
 
@@ -80,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-6 lg:space-x-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -100,13 +101,12 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
 
           {/* Controls */}
           <div className="flex items-center gap-4">
-             {/* Tutorial Button (Usage Guide) */}
-             <button
+            {/* Tutorial Button */}
+            <button
               onClick={onOpenTutorial}
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold border border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-white transition-colors"
+              className="hidden sm:block px-3 py-1.5 rounded-full bg-brand-cyan/10 text-brand-cyan hover:bg-brand-cyan/20 text-sm font-bold transition-colors"
             >
-              <BookOpen size={14} />
-              <span>사용법</span>
+              사용법
             </button>
 
             {/* Theme Toggle */}
@@ -150,10 +150,13 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, onOpenTutorial }
               </a>
             ))}
             <button
-               onClick={() => { onOpenTutorial(); setIsMobileMenuOpen(false); }}
-               className="w-full text-left text-brand-cyan font-bold block px-3 py-2 rounded-md text-base mt-2 border-t border-gray-100 dark:border-gray-700 pt-4"
+                onClick={() => {
+                    onOpenTutorial();
+                    setIsMobileMenuOpen(false);
+                }}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-bold text-brand-cyan hover:bg-brand-cyan/10"
             >
-              사용 가이드 보기
+                사용법
             </button>
           </div>
         </div>

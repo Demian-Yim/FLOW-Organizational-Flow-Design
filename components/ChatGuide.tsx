@@ -13,8 +13,21 @@ const ChatGuide: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: '안녕하세요! 😊 기업교육 전문 FLOW~의 AI 매니저입니다.\n\nAI 실무, 리더십, 조직문화 등 조직의 고민이 있으신가요? 편하게 말씀해주시면 딱 맞는 솔루션을 안내해 드릴게요!' }
+    { role: 'model', text: '안녕하세요! 😊 FLOW~의 AI 매니저입니다.\n\n조직의 성장과 변화를 위한 여정에 함께하게 되어 기쁩니다.\n\n궁금한 점이 있으시거나, FLOW~의 사용법이 궁금하시다면 언제든 말씀해주세요! 👇' }
   ]);
+
+  const showUserGuide = () => {
+    const guideText = `
+    [FLOW~ 사용자 가이드 📘]
+
+    1. **진단하기**: 'Experience' 섹션에서 조직의 현재 상태를 진단해보세요.
+    2. **과정 탐색**: 'Program' 섹션에서 33개의 맞춤형 커리큘럼을 확인하세요.
+    3. **문의하기**: 궁금한 점은 저(AI 매니저)에게 물어보거나, 'Contact'에서 직접 문의를 남겨주세요.
+    
+    무엇을 도와드릴까요?
+    `;
+    setMessages(prev => [...prev, { role: 'model', text: guideText }]);
+  };
   const [isLoading, setIsLoading] = useState(false);
   const [chatSession, setChatSession] = useState<Chat | null>(null);
   const [turnCount, setTurnCount] = useState(0);
@@ -48,7 +61,7 @@ const ChatGuide: React.FC = () => {
           ${programContext}
           
           [회사 정보]
-          - 대표: 임정훈 (Demian) - HRD 전문가이자 AI 코디네이터.
+          - 소장: 임정훈 (Demian) - HRD 전문가이자 AI 코디네이터.
           - 강점: 이론 중심이 아닌 80% 실습 위주, 현업 적용도 최상.
           
           [주의사항]
@@ -154,9 +167,14 @@ const ChatGuide: React.FC = () => {
                 <h4 className="font-flow font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">FLOW~</h4>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="hover:bg-white/10 p-1.5 rounded-full transition-colors relative z-10 text-gray-400 hover:text-white">
-              <X size={18} />
-            </button>
+            <div className="flex items-center gap-2">
+                <button onClick={showUserGuide} className="text-xs bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-white transition-colors">
+                    가이드 보기
+                </button>
+                <button onClick={() => setIsOpen(false)} className="hover:bg-white/10 p-1.5 rounded-full transition-colors relative z-10 text-gray-400 hover:text-white">
+                  <X size={18} />
+                </button>
+            </div>
           </div>
 
           {/* Chat Area */}

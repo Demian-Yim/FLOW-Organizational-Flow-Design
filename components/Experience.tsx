@@ -48,7 +48,7 @@ const Experience: React.FC = () => {
         <div className="text-center mb-16" ref={revealRef}>
           <span className="text-brand-cyan font-bold tracking-wider uppercase">EXPERIENCE</span>
           <h2 className="text-4xl md:text-5xl font-black mt-2 mb-6 text-slate-900 dark:text-white">
-            FLOW~ 진단 연구소
+            5분 무료 진단
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             데이터와 AI를 통해 나를 객관적으로 파악해보세요.<br/>

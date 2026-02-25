@@ -22,14 +22,14 @@ const Profile: React.FC = () => {
                 <div className="relative z-20 w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-200 transform transition-transform duration-500 hover:scale-[1.02]">
                     <img 
                         src="https://i.ibb.co/dsLbNhBX/2019.png" 
-                        alt="임정훈 대표" 
+                        alt="임정훈 소장" 
                         className="w-full h-full object-cover object-top filter contrast-105"
                     />
                     {/* Overlay Text */}
                     <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent p-6 pt-24">
                         <div className="flex items-center gap-2 mb-1">
                             <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
-                            <p className="text-brand-cyan font-bold text-xs tracking-widest uppercase">FLOW~ 대표</p>
+                            <p className="text-brand-cyan font-bold text-xs tracking-widest uppercase">FLOW~ 소장</p>
                         </div>
                         <h3 className="text-3xl font-black text-white leading-none">임 정 훈</h3>
                         <p className="text-gray-300 text-sm mt-1 font-light">Demian Yim</p>
@@ -74,7 +74,7 @@ const Profile: React.FC = () => {
             <div className="mb-8">
                 <span className="text-brand-cyan font-black tracking-widest uppercase text-sm border-b-2 border-brand-cyan pb-1">HRD & AI COORDINATOR</span>
                 <h2 className="text-4xl lg:text-5xl font-black mt-4 mb-6 text-slate-900 dark:text-white leading-tight">
-                    <span className="text-slate-500">FLOW~ 대표</span><br/>
+                    <span className="text-slate-500">FLOW~ 소장</span><br/>
                     <span className="text-brand-cyan">AI 코디네이터</span> 임정훈입니다.
                 </h2>
                 <p className="text-xl text-gray-700 dark:text-gray-300 font-medium leading-relaxed">
@@ -120,7 +120,7 @@ const Profile: React.FC = () => {
                 <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li className="flex items-start gap-2">
                         <CheckCircle size={16} className="text-brand-cyan shrink-0 mt-1" />
-                        <span>現 FLOW~ 대표 (HRD & AI Coordinator)</span>
+                        <span>現 FLOW~ 소장 (HRD & AI Coordinator)</span>
                     </li>
                     <li className="flex items-start gap-2">
                         <CheckCircle size={16} className="text-slate-500 dark:text-slate-600 shrink-0 mt-1" />

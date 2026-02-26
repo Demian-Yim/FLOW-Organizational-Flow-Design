@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { User, Phone, Mail, Loader2, Send, Calendar, MapPin, Users, HelpCircle, Building } from 'lucide-react';
 import { sendContactToSheet } from '../utils/googleApi';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 interface ContactProps {
   initialCourse?: string;
@@ -47,7 +49,19 @@ const Contact: React.FC<ContactProps> = ({ initialCourse }) => {
     setIsSubmitting(true);
 
     try {
-        await sendContactToSheet(formData);
+        // Save to Firebase
+        await addDoc(collection(db, 'inquiries'), {
+          ...formData,
+          createdAt: serverTimestamp()
+        });
+        
+        // Save to Google Sheets (if still needed)
+        try {
+          await sendContactToSheet(formData);
+        } catch (sheetError) {
+          console.error("Google Sheets error:", sheetError);
+          // Continue even if sheet fails, as Firebase succeeded
+        }
         alert('문의가 성공적으로 접수되었습니다.\n담당자가 확인 후 24시간 이내에 연락드리겠습니다.');
         setFormData({ company: '', name: '', contact: '', email: '', course: '', schedule: '', target: '', location: '', issues: '' });
     } catch (error) {

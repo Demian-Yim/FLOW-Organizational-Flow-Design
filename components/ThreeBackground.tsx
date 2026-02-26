@@ -78,9 +78,10 @@ const ThreeBackground: React.FC = () => {
     window.addEventListener('resize', handleResize);
 
     // Cleanup
+    const currentMount = mountRef.current;
     return () => {
-        if(mountRef.current && renderer.domElement) {
-            mountRef.current.removeChild(renderer.domElement);
+        if(currentMount && renderer.domElement) {
+            currentMount.removeChild(renderer.domElement);
         }
         window.removeEventListener('resize', handleResize);
         document.removeEventListener('mousemove', handleMouseMove);

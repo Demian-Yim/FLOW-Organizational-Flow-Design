@@ -45,22 +45,43 @@ export const saveDiagnosisData = async (
     pdfUrl: string, 
     answers: any
 ) => {
+    // Save to Firebase
+    try {
+      const { db } = await import('../firebase');
+      const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
+      
+      await addDoc(collection(db, 'diagnostics'), {
+        name,
+        type,
+        results,
+        pdfUrl,
+        answers,
+        createdAt: serverTimestamp()
+      });
+    } catch (firebaseError) {
+      console.error("Firebase save error:", firebaseError);
+    }
+
     if (SCRIPT_URL.includes('YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE')) {
       console.warn("Google Script URL이 설정되지 않았습니다.");
       return;
     }
   
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify({
-        action: 'save_diagnosis',
-        name,
-        type,
-        results: JSON.stringify(results),
-        pdfUrl,
-        answers: JSON.stringify(answers)
-      }),
-    });
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'save_diagnosis',
+          name,
+          type,
+          results: JSON.stringify(results),
+          pdfUrl,
+          answers: JSON.stringify(answers)
+        }),
+      });
+    } catch (sheetError) {
+      console.error("Google Sheets error:", sheetError);
+    }
 };
 
 export const saveChatLog = async (sessionId: string, messages: any[]) => {

@@ -23,7 +23,7 @@ const ChatGuide: React.FC = () => {
     1. **진단하기**: 'Experience' 섹션에서 조직의 현재 상태를 진단해보세요.
     2. **과정 탐색**: 'Program' 섹션에서 33개의 맞춤형 커리큘럼을 확인하세요.
     3. **문의하기**: 궁금한 점은 저(AI 매니저)에게 물어보거나, 'Contact'에서 직접 문의를 남겨주세요.
-    
+
     무엇을 도와드릴까요?
     `;
     setMessages(prev => [...prev, { role: 'model', text: guideText }]);
@@ -89,7 +89,7 @@ const ChatGuide: React.FC = () => {
   }, [messages]);
 
   // Save chat log logic
-  const handleSaveLog = async () => {
+  const handleSaveLog = useRef(async () => {
     if (turnCount >= 4 && messages.length > 2) {
        await saveChatLog(
          `User_${generateDateString().slice(8)}`, // Simple Anon ID
@@ -97,14 +97,14 @@ const ChatGuide: React.FC = () => {
        );
        console.log("Chat log saved to sheet.");
     }
-  };
+  });
 
   // Save log when chat closes if turns >= 4
   useEffect(() => {
       if (!isOpen && turnCount >= 4) {
-          handleSaveLog();
+          handleSaveLog.current();
       }
-  }, [isOpen]);
+  }, [isOpen, turnCount]);
 
   const handleSend = async () => {
     if (!input.trim() || !chatSession) return;

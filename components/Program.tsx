@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { TABS, PROGRAMS } from '../constants';
 import { X, Check, Star, Clock, Target, Users, Sparkles, ArrowRight, MessageCircle, BookOpen, Layout, Grid, Zap, Layers } from 'lucide-react';
@@ -40,14 +40,23 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
 
   const detailData = selectedProgram ? getProgramDetail(selectedProgram) : null;
 
+  useEffect(() => {
+    if (selectedProgram) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProgram]);
+
   const openModal = (program: ProgramItem) => {
     setSelectedProgram(program);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setSelectedProgram(null);
-    document.body.style.overflow = 'unset';
   };
 
   const handleInquire = () => {
@@ -168,7 +177,7 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
           {TABS.map((tab) => {
              const isActive = activeTab === tab.id;
              let activeClasses = '';
-             let inactiveClasses = 'bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 text-gray-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500 scale-95 opacity-80';
+             const inactiveClasses = 'bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 text-gray-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500 scale-95 opacity-80';
 
              if (isActive) {
                  if(tab.id === 'A') activeClasses = 'bg-brand-cyan text-slate-900 border-brand-cyan scale-105 shadow-[0_0_20px_rgba(6,182,212,0.6)] z-10';

@@ -34,7 +34,7 @@ const UsageGuide: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={revealRef}>
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
-            FLOW~ 이용 가이드
+            변화 가이드
           </h2>
           <p className="mt-2 text-slate-600 dark:text-slate-400">
             3단계로 완성되는 조직의 변화

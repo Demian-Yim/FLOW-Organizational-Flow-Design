@@ -16,7 +16,7 @@ async function startServer() {
   });
 
   const distPath = path.resolve(__dirname, "dist");
-  const isProd = process.env.NODE_ENV === "production" || !process.env.VITE_DEV;
+  const isProd = process.env.NODE_ENV === "production";
 
   if (isProd) {
     // Serve static files from dist

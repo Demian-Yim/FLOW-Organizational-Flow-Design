@@ -399,15 +399,32 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
                                             {/* KPIs */}
                                             <div className={`p-6 rounded-2xl border-2 ${theme.borderColor} ${theme.lightBg} dark:bg-slate-800/50 flex flex-col`}>
                                                 <h3 className="text-xs font-black opacity-60 uppercase tracking-widest mb-4 flex items-center gap-2">
-                                                    <Sparkles size={16} /> 기대 효과 (KPI)
+                                                    <Sparkles size={16} /> Before & After
                                                 </h3>
                                                 <div className="space-y-3 my-auto">
-                                                    {detailData.effects && detailData.effects.map((effect, i) => (
-                                                        <div key={i} className="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-black/5">
-                                                            <Check size={18} className="text-green-500 shrink-0" strokeWidth={3} />
-                                                            <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{effect}</span>
-                                                        </div>
-                                                    ))}
+                                                    {detailData.effects && detailData.effects.map((effect, i) => {
+                                                        if (effect.includes('→')) {
+                                                            const [before, after] = effect.split('→').map(s => s.trim());
+                                                            return (
+                                                                <div key={i} className="flex flex-col gap-2.5 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-black/5">
+                                                                    <div className="flex items-start gap-2.5 text-slate-500 dark:text-slate-400">
+                                                                        <span className="text-[10px] font-black bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-slate-500 dark:text-slate-400 shrink-0 uppercase tracking-wider mt-0.5">Before</span>
+                                                                        <span className="text-sm line-through decoration-slate-300 dark:decoration-slate-600 leading-snug">{before}</span>
+                                                                    </div>
+                                                                    <div className="flex items-start gap-2.5 text-slate-800 dark:text-slate-200">
+                                                                        <span className={`text-[10px] font-black px-2 py-1 rounded shrink-0 uppercase tracking-wider ${theme.titleColor} bg-white dark:bg-slate-800 border border-current mt-0.5`}>After</span>
+                                                                        <span className="text-sm font-bold leading-snug">{after}</span>
+                                                                    </div>
+                                                                </div>
+                                                            );
+                                                        }
+                                                        return (
+                                                            <div key={i} className="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-black/5">
+                                                                <Check size={18} className="text-green-500 shrink-0" strokeWidth={3} />
+                                                                <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{effect}</span>
+                                                            </div>
+                                                        );
+                                                    })}
                                                 </div>
                                             </div>
                                         </div>

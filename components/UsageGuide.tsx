@@ -33,11 +33,11 @@ const UsageGuide: React.FC = () => {
     <section className="py-16 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={revealRef}>
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
-            변화 가이드
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+            사용 가이드
           </h2>
-          <p className="mt-2 text-slate-600 dark:text-slate-400">
-            3단계로 완성되는 조직의 변화
+          <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 font-medium">
+            FLOW~ 와 함께하는 3단계 변화 프로세스
           </p>
         </div>
 

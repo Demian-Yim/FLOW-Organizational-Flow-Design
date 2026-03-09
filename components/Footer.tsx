@@ -12,7 +12,10 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="text-slate-300 text-sm font-normal leading-relaxed space-y-2">
-          <p className="text-white font-bold text-lg tracking-wide mb-2">Developed by HRD & AI Coordinator, Demian 임정훈</p>
+          <p className="text-white font-bold text-lg tracking-wide mb-2">
+            Developed by <span className="text-brand-cyan text-xl font-black drop-shadow-md">Demian 임정훈</span>
+          </p>
+          <p className="text-brand-pastelCyan font-medium mb-4">HRD & AI Coordinator</p>
           
           <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 mb-2">
             <span className="flex items-center gap-2">

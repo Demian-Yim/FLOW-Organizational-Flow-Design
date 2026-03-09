@@ -87,7 +87,7 @@ const TutorialModal: React.FC<TutorialModalProps> = ({ onClose }) => {
                     {currentStep.icon}
                 </div>
                 <div className="hidden md:block text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">
-                    INSIGHT 0{step} / 0{steps.length}
+                    인사이트 0{step} / 0{steps.length}
                 </div>
             </div>
 

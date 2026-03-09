@@ -13,7 +13,7 @@ const ChatGuide: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: '안녕하세요! 😊 FLOW~의 AI 매니저입니다.\n\n조직의 성장과 변화를 위한 여정에 함께하게 되어 기쁩니다.\n\n궁금한 점이 있으시거나, FLOW~의 사용법이 궁금하시다면 언제든 말씀해주세요! 👇' }
+    { role: 'model', text: '안녕하세요! 😊 FLOW~의 AI 매니저입니다.\n\n조직의 성장과 변화를 위한 여정에 함께하게 되어 기쁩니다.\n\n[FLOW~ 사용자 가이드 📘]\n1. 진단하기: \'Experience\' 섹션에서 조직의 현재 상태를 진단해보세요.\n2. 과정 탐색: \'Program\' 섹션에서 33개의 맞춤형 커리큘럼을 확인하세요.\n3. 문의하기: 궁금한 점은 저에게 물어보거나, \'Contact\'에서 직접 문의를 남겨주세요.\n\n궁금한 점이 있으시거나, FLOW~의 사용법이 궁금하시다면 언제든 말씀해주세요! 👇' }
   ]);
 
   const showUserGuide = () => {

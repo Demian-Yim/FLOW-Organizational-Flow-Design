@@ -86,7 +86,7 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
                   borderColor: 'border-brand-cyan',
                   titleColor: 'text-brand-cyan'
               };
-          case 'B': // HRD - Purple/White
+          case 'B': // AI 코칭 - Purple/White
               return {
                   base: 'bg-white border-[3px] border-slate-900 text-slate-900',
                   hover: 'hover:bg-[#8b5cf6] hover:text-white hover:border-[#8b5cf6] hover:shadow-[8px_8px_0_#2e1065]',
@@ -99,7 +99,7 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
                   borderColor: 'border-[#8b5cf6]',
                   titleColor: 'text-[#8b5cf6]'
               };
-          case 'C': // Work Smart - Green/Dark Green
+          case 'C': // HRD & 조직역량 - Green/Dark Green
               return {
                   base: 'bg-white border-[3px] border-slate-900 text-slate-900',
                   hover: 'hover:bg-[#10b981] hover:text-white hover:border-[#10b981] hover:shadow-[8px_8px_0_#064e3b]',
@@ -112,7 +112,7 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
                   borderColor: 'border-[#10b981]',
                   titleColor: 'text-[#10b981]'
               };
-          case 'D': // Leadership - Yellow/Black
+          case 'D': // 에너지 & 웰니스 - Yellow/Black
               return {
                   base: 'bg-white border-[3px] border-slate-900 text-slate-900',
                   hover: 'hover:bg-[#f59e0b] hover:text-slate-900 hover:border-[#f59e0b] hover:shadow-[8px_8px_0_#78350f]',
@@ -124,6 +124,19 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
                   lightBg: 'bg-amber-50',
                   borderColor: 'border-[#f59e0b]',
                   titleColor: 'text-[#f59e0b]'
+              };
+          case 'E': // 리더십 & 인문학 - Pink/White
+              return {
+                  base: 'bg-white border-[3px] border-slate-900 text-slate-900',
+                  hover: 'hover:bg-[#ec4899] hover:text-white hover:border-[#ec4899] hover:shadow-[8px_8px_0_#831843]',
+                  badge: 'bg-[#ec4899] text-white',
+                  iconBase: 'bg-[#ec4899] text-white',
+                  iconHover: 'group-hover:bg-white group-hover:text-[#ec4899]',
+                  accentColor: '#ec4899',
+                  gradient: 'from-[#ec4899] to-[#be185d]',
+                  lightBg: 'bg-pink-50',
+                  borderColor: 'border-[#ec4899]',
+                  titleColor: 'text-[#ec4899]'
               };
           default:
               return {
@@ -144,9 +157,10 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
   const getCategoryName = (cat: string) => {
       switch(cat) {
           case 'A': return 'AI 실무';
-          case 'B': return 'HRD & 조직역량';
-          case 'C': return '워크스마트';
-          case 'D': return '리더십 & 인문학';
+          case 'B': return 'AI 코칭';
+          case 'C': return 'HRD & 조직역량';
+          case 'D': return '에너지 & 웰니스';
+          case 'E': return '리더십 & 인문학';
           default: return 'General';
       }
   }
@@ -184,6 +198,7 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
                  if(tab.id === 'B') activeClasses = 'bg-[#8b5cf6] text-white border-[#8b5cf6] scale-105 shadow-[0_0_20px_rgba(139,92,246,0.6)] z-10';
                  if(tab.id === 'C') activeClasses = 'bg-[#10b981] text-slate-900 border-[#10b981] scale-105 shadow-[0_0_20px_rgba(16,185,129,0.6)] z-10';
                  if(tab.id === 'D') activeClasses = 'bg-[#f59e0b] text-slate-900 border-[#f59e0b] scale-105 shadow-[0_0_20px_rgba(245,158,11,0.6)] z-10';
+                 if(tab.id === 'E') activeClasses = 'bg-[#ec4899] text-white border-[#ec4899] scale-105 shadow-[0_0_20px_rgba(236,72,153,0.6)] z-10';
              }
 
              return (

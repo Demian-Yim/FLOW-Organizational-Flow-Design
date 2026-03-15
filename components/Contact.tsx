@@ -2,8 +2,54 @@ import React, { useState, useRef, useEffect } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { User, Phone, Mail, Loader2, Send, Calendar, MapPin, Users, HelpCircle, Building } from 'lucide-react';
 import { sendContactToSheet } from '../utils/googleApi';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
+enum OperationType {
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  LIST = 'list',
+  GET = 'get',
+  WRITE = 'write',
+}
+
+interface FirestoreErrorInfo {
+  error: string;
+  operationType: OperationType;
+  path: string | null;
+  authInfo: {
+    userId?: string;
+    email?: string | null;
+    emailVerified?: boolean;
+    isAnonymous?: boolean;
+    tenantId?: string | null;
+    providerInfo?: any[];
+  }
+}
+
+function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+  const errInfo: FirestoreErrorInfo = {
+    error: error instanceof Error ? error.message : String(error),
+    authInfo: {
+      userId: auth.currentUser?.uid,
+      email: auth.currentUser?.email,
+      emailVerified: auth.currentUser?.emailVerified,
+      isAnonymous: auth.currentUser?.isAnonymous,
+      tenantId: auth.currentUser?.tenantId,
+      providerInfo: auth.currentUser?.providerData.map(provider => ({
+        providerId: provider.providerId,
+        displayName: provider.displayName,
+        email: provider.email,
+        photoUrl: provider.photoURL
+      })) || []
+    },
+    operationType,
+    path
+  };
+  console.error('Firestore Error: ', JSON.stringify(errInfo));
+  throw new Error(JSON.stringify(errInfo));
+}
 
 interface ContactProps {
   initialCourse?: string;
@@ -65,7 +111,7 @@ const Contact: React.FC<ContactProps> = ({ initialCourse }) => {
         alert('문의가 성공적으로 접수되었습니다.\n담당자가 확인 후 24시간 이내에 연락드리겠습니다.');
         setFormData({ company: '', name: '', contact: '', email: '', course: '', schedule: '', target: '', location: '', issues: '' });
     } catch (error) {
-        console.error('Submission Error:', error);
+        handleFirestoreError(error, OperationType.CREATE, 'inquiries');
         alert('전송 중 오류가 발생했습니다.');
     } finally {
         setIsSubmitting(false);

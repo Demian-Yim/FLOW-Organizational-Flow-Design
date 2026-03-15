@@ -30,35 +30,33 @@ const UsageGuide: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section className="py-16 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={revealRef}>
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight font-sans">
             사용 가이드
           </h2>
-          <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 font-medium">
-            FLOW~ 와 함께하는 3단계 변화 프로세스
+          <p className="mt-4 text-xl text-slate-600 dark:text-slate-400 font-medium font-sans">
+            <span className="font-flow text-brand-blue dark:text-brand-pastelCyan">FLOW~</span> 와 함께하는 3단계 변화 프로세스
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {/* Connector Line (Desktop) */}
+          <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-gradient-to-r from-brand-pastelCyan via-brand-pastelBlue to-brand-pastelPurple z-0 transform -translate-y-1/2 opacity-50 rounded-full"></div>
+          
           {steps.map((step, index) => (
-            <div key={step.id} className="relative group">
-              {/* Connector Line (Desktop) */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-slate-200 dark:bg-slate-700 z-0 transform -translate-y-1/2"></div>
-              )}
-              
+            <div key={step.id} className="relative group z-10">
               <div className={`
-                relative z-10 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-2
-                ${step.color} shadow-lg hover:shadow-xl
+                relative p-8 rounded-3xl transition-all duration-300 hover:-translate-y-3
+                ${step.color} shadow-xl hover:shadow-2xl border-4 border-white dark:border-slate-800
               `}>
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 bg-white/50 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
+                  <div className="w-20 h-20 bg-white/60 dark:bg-white/80 rounded-full flex items-center justify-center mb-6 backdrop-blur-md shadow-inner">
                     {step.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
-                  <p className="text-slate-700 text-sm font-medium leading-relaxed">
+                  <h3 className="text-2xl font-black text-slate-900 mb-3 font-sans tracking-tight">{step.title}</h3>
+                  <p className="text-slate-800 text-base font-bold leading-relaxed font-sans">
                     {step.desc}
                   </p>
                 </div>

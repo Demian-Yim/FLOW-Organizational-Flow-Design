@@ -127,10 +127,10 @@ const AICompetency: React.FC<AICompetencyProps> = ({ onClose }) => {
   `;
 
   // State
-  const steps = ['intro', 'info', 'q2', 'q3', 'q4', 'q5', 'q5b', 'q6', 'q7', 'q8', 'q9-1', 'q9-2', 'q9-3', 'q10', 'q11', 'loading', 'result'];
+  const steps = ['intro', 'info', 'q2', 'contact', 'q3', 'q4', 'q5', 'q5b', 'q6', 'q7', 'q8', 'q9-1', 'q9-2', 'q9-3', 'q10', 'q11', 'loading', 'result'];
   const [stepIndex, setStepIndex] = useState(0);
   const [data, setData] = useState<any>({});
-  const [inputs, setInputs] = useState({ name: '', team: '', job: '', jobOther: '', size: '' });
+  const [inputs, setInputs] = useState({ name: '', team: '', job: '', jobOther: '', size: '', email: '', phone: '', company: '', consent: false });
   const [result, setResult] = useState<any>(null);
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -166,6 +166,7 @@ const AICompetency: React.FC<AICompetencyProps> = ({ onClose }) => {
     const s = currentStep;
     if(s === 'info') return inputs.name && inputs.team;
     if(s === 'q2') return inputs.job && inputs.size;
+    if(s === 'contact') return inputs.email && inputs.phone && inputs.company && inputs.consent;
     if(s === 'q3') return data.p1_q4;
     if(s === 'q4') return data.p2_q5;
     if(s === 'q5b') return data.p2_q6b;
@@ -360,6 +361,24 @@ const AICompetency: React.FC<AICompetencyProps> = ({ onClose }) => {
                         <option value="Mid">300~1000명 (중견)</option>
                         <option value="Large">1000명+ (대기업)</option>
                     </select>
+                </div>
+            )}
+
+            {/* 2.5 CONTACT */}
+            {currentStep === 'contact' && (
+                <div className="max-w-md mx-auto animate-fadeIn">
+                    <div className="section-tag inline-block px-3 py-1 rounded-full border-2 border-[#2b2b2b] mb-4">STEP 0.5 연락처 정보</div>
+                    <h3 className="text-2xl font-bold mb-2">진단 결과 전송을 위해<br/>연락처를 남겨주세요.</h3>
+                    <p className="text-gray-500 mb-6">맞춤형 교육 상담 목적으로만 사용됩니다.</p>
+                    <input type="text" value={inputs.company} onChange={(e) => handleInputChange('company', e.target.value)} placeholder="회사명 (예: 플로우컴퍼니)" className="w-full p-3 text-lg border-2 border-[#2b2b2b] rounded-lg mb-4 focus:outline-none focus:shadow-[3px_3px_0_rgba(0,0,0,0.1)]" />
+                    <input type="email" value={inputs.email} onChange={(e) => handleInputChange('email', e.target.value)} placeholder="이메일 (예: flow@example.com)" className="w-full p-3 text-lg border-2 border-[#2b2b2b] rounded-lg mb-4 focus:outline-none focus:shadow-[3px_3px_0_rgba(0,0,0,0.1)]" />
+                    <input type="tel" value={inputs.phone} onChange={(e) => handleInputChange('phone', e.target.value)} placeholder="연락처 (예: 010-1234-5678)" className="w-full p-3 text-lg border-2 border-[#2b2b2b] rounded-lg mb-4 focus:outline-none focus:shadow-[3px_3px_0_rgba(0,0,0,0.1)]" />
+                    <div className="mt-2 p-3 bg-white border-2 border-[#2b2b2b] rounded-lg text-xs font-bold text-gray-600">
+                        <label className="flex items-start gap-2 cursor-pointer">
+                            <input type="checkbox" className="mt-1" checked={inputs.consent} onChange={(e) => setInputs({...inputs, consent: e.target.checked})} required />
+                            <span>(필수) 개인정보 수집 및 이용에 동의합니다.</span>
+                        </label>
+                    </div>
                 </div>
             )}
 
@@ -587,10 +606,10 @@ const AICompetency: React.FC<AICompetencyProps> = ({ onClose }) => {
 
             {/* RESULT */}
             {currentStep === 'result' && result && (
-                <div className="w-full flex flex-col items-center animate-fadeIn pb-20">
+                <div className="w-full flex flex-col items-center animate-fadeIn pb-20 overflow-x-auto">
                     
                     {/* Capture Target */}
-                    <div id="capture-target" className="bg-[#fffef8] w-full max-w-[595px] p-6 text-left relative">
+                    <div id="capture-target" className="bg-[#fffef8] w-[595px] min-w-[595px] p-6 text-left relative shrink-0">
                         {/* Header */}
                         <div className="flex justify-between items-end border-b-2 border-[#2b2b2b] pb-4 mb-6">
                             <h2 className="text-3xl font-bold">AI 역량 진단 리포트</h2>
@@ -679,7 +698,7 @@ const AICompetency: React.FC<AICompetencyProps> = ({ onClose }) => {
                     <ArrowLeft size={18} /> 이전
                 </button>
                 {/* Check/Radio steps usually auto-advance, but providing Next button for manual steps or if user wants to skip optional? No, validation prevents skip. */}
-                {['info', 'q2', 'q5', 'q8', 'q10', 'q11'].includes(currentStep) && (
+                {['info', 'q2', 'contact', 'q5', 'q8', 'q10', 'q11'].includes(currentStep) && (
                      <button onClick={nextStep} className="flex-1 py-3 bg-[#74b9ff] text-white border-2 border-[#2b2b2b] rounded-xl font-bold shadow-[3px_3px_0_#2b2b2b] btn-action flex items-center justify-center gap-2">
                         {currentStep === 'q11' ? '결과 보기' : '다음'} <ArrowRight size={18} />
                     </button>

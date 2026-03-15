@@ -8,15 +8,19 @@ interface StressDiagnosisProps {
 }
 
 const StressDiagnosis: React.FC<StressDiagnosisProps> = ({ onClose }) => {
-  // Steps: intro -> info(name/team) -> job(job/career) -> input(stress/symptoms) -> loading -> result
+  // Steps: intro -> info(name/team) -> job(job/career) -> contact(email/phone/company) -> input(stress/symptoms) -> loading -> result
   const [step, setStep] = useState('intro');
   const [inputs, setInputs] = useState({ 
     name: '', 
     team: '', 
     job: '', 
     career: '', 
+    email: '',
+    phone: '',
+    company: '',
     stress: '', 
-    symptom: '' 
+    symptom: '',
+    consent: false
   });
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -43,6 +47,7 @@ const StressDiagnosis: React.FC<StressDiagnosisProps> = ({ onClose }) => {
   const validateStep = () => {
     if (step === 'info') return inputs.name && inputs.team;
     if (step === 'job') return inputs.job && inputs.career;
+    if (step === 'contact') return inputs.email && inputs.phone && inputs.company && inputs.consent;
     if (step === 'input') return inputs.stress && inputs.symptom;
     return true;
   };
@@ -54,14 +59,16 @@ const StressDiagnosis: React.FC<StressDiagnosisProps> = ({ onClose }) => {
     }
     if (step === 'intro') setStep('info');
     else if (step === 'info') setStep('job');
-    else if (step === 'job') setStep('input');
+    else if (step === 'job') setStep('contact');
+    else if (step === 'contact') setStep('input');
     else if (step === 'input') handleAnalyze();
   };
 
   const prevStep = () => {
     if (step === 'info') setStep('intro');
     else if (step === 'job') setStep('info');
-    else if (step === 'input') setStep('job');
+    else if (step === 'contact') setStep('job');
+    else if (step === 'input') setStep('contact');
   };
 
   const handleAnalyze = async () => {
@@ -266,6 +273,41 @@ const StressDiagnosis: React.FC<StressDiagnosisProps> = ({ onClose }) => {
                 </div>
             )}
 
+            {/* STEP: CONTACT */}
+            {step === 'contact' && (
+                <div className="max-w-md mx-auto animate-fadeIn mt-10">
+                    <label className="block bg-black text-white font-display text-xl px-4 py-2 mb-6 border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,0.2)] w-fit">
+                        03. CONTACT INFO
+                    </label>
+                    <p className="text-sm font-bold text-gray-600 mb-6">
+                        진단 결과 전송 및 맞춤형 교육 상담을 위해 연락처를 남겨주세요.
+                    </p>
+                    <div className="space-y-4">
+                        <div>
+                            <label className="block font-bold mb-2">COMPANY (회사명)</label>
+                            <input type="text" value={inputs.company} onChange={(e) => handleInputChange('company', e.target.value)} 
+                                className="w-full p-3 border-4 border-black text-lg font-bold focus:outline-none focus:shadow-[inset_4px_4px_0_rgba(0,0,0,0.1)]" placeholder="예: 플로우컴퍼니" />
+                        </div>
+                        <div>
+                            <label className="block font-bold mb-2">EMAIL (이메일)</label>
+                            <input type="email" value={inputs.email} onChange={(e) => handleInputChange('email', e.target.value)} 
+                                className="w-full p-3 border-4 border-black text-lg font-bold focus:outline-none focus:shadow-[inset_4px_4px_0_rgba(0,0,0,0.1)]" placeholder="예: flow@example.com" />
+                        </div>
+                        <div>
+                            <label className="block font-bold mb-2">PHONE (연락처)</label>
+                            <input type="tel" value={inputs.phone} onChange={(e) => handleInputChange('phone', e.target.value)} 
+                                className="w-full p-3 border-4 border-black text-lg font-bold focus:outline-none focus:shadow-[inset_4px_4px_0_rgba(0,0,0,0.1)]" placeholder="예: 010-1234-5678" />
+                        </div>
+                        <div className="mt-4 p-3 bg-white border-2 border-black text-xs font-bold text-gray-600">
+                            <label className="flex items-start gap-2 cursor-pointer">
+                                <input type="checkbox" className="mt-1" checked={inputs.consent} onChange={(e) => setInputs({...inputs, consent: e.target.checked})} required />
+                                <span>(필수) 개인정보 수집 및 이용에 동의합니다. 수집된 정보는 진단 결과 안내 및 교육 상담 목적으로만 사용됩니다.</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* STEP: INPUT */}
             {step === 'input' && (
                 <div className="max-w-xl mx-auto animate-fadeIn space-y-8 pb-10">
@@ -312,11 +354,11 @@ const StressDiagnosis: React.FC<StressDiagnosisProps> = ({ onClose }) => {
 
             {/* STEP: RESULT (A4 Single Page) */}
             {step === 'result' && result && (
-                <div className="w-full flex justify-center pb-20">
+                <div className="w-full flex justify-center pb-20 overflow-x-auto">
                      {/* Strict A4 Container: 595px width */}
                      <div 
                         id="stress-report-area" 
-                        className="bg-[#f0f0f0] w-[595px] min-h-[842px] relative border-4 border-black overflow-hidden flex flex-col"
+                        className="bg-[#f0f0f0] w-[595px] min-w-[595px] min-h-[842px] relative border-4 border-black overflow-hidden flex flex-col shrink-0"
                     >
                         {/* 1. Top Bar */}
                         <div className="bg-black text-white p-4 flex justify-between items-center border-b-4 border-black shrink-0">

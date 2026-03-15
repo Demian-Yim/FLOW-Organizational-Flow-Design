@@ -8,13 +8,17 @@ interface LeadershipArchitectProps {
 }
 
 const LeadershipArchitect: React.FC<LeadershipArchitectProps> = ({ onClose }) => {
-  // Steps: intro -> info -> job -> quiz -> loading -> result
+  // Steps: intro -> info -> job -> contact -> quiz -> loading -> result
   const [step, setStep] = useState('intro');
   const [inputs, setInputs] = useState({ 
     name: '', 
     team: '', 
     job: '', 
-    career: '' 
+    career: '',
+    email: '',
+    phone: '',
+    company: '',
+    consent: false
   });
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<any[]>([]);
@@ -91,6 +95,7 @@ const LeadershipArchitect: React.FC<LeadershipArchitectProps> = ({ onClose }) =>
   const validateStep = () => {
     if (step === 'info') return inputs.name && inputs.team;
     if (step === 'job') return inputs.job && inputs.career;
+    if (step === 'contact') return inputs.email && inputs.phone && inputs.company && inputs.consent;
     return true;
   };
 
@@ -101,13 +106,15 @@ const LeadershipArchitect: React.FC<LeadershipArchitectProps> = ({ onClose }) =>
     }
     if (step === 'intro') setStep('info');
     else if (step === 'info') setStep('job');
-    else if (step === 'job') setStep('quiz');
+    else if (step === 'job') setStep('contact');
+    else if (step === 'contact') setStep('quiz');
   };
 
   const prevStep = () => {
     if (step === 'info') setStep('intro');
     else if (step === 'job') setStep('info');
-    else if (step === 'quiz') setStep('job');
+    else if (step === 'contact') setStep('job');
+    else if (step === 'quiz') setStep('contact');
   };
 
   const handleAnswer = (answer: string) => {
@@ -295,6 +302,39 @@ const LeadershipArchitect: React.FC<LeadershipArchitectProps> = ({ onClose }) =>
                     </div>
                 )}
 
+                {/* CONTACT */}
+                {step === 'contact' && (
+                    <div className="max-w-md mx-auto animate-fadeIn mt-10">
+                        <div className="inline-block bg-[#2d3436] text-white px-3 py-1 font-bold mb-6 text-sm uppercase tracking-widest">Step 03. Contact Info</div>
+                        <p className="text-sm font-bold text-gray-600 mb-6">
+                            진단 결과 전송 및 맞춤형 교육 상담을 위해 연락처를 남겨주세요.
+                        </p>
+                        <div className="space-y-4">
+                            <div>
+                                <label className="block font-bold mb-2 text-sm text-gray-500 uppercase">Company</label>
+                                <input type="text" value={inputs.company} onChange={(e) => handleInputChange('company', e.target.value)} 
+                                    className="w-full p-3 border-[3px] border-[#2d3436] rounded-lg text-lg font-bold focus:outline-none bg-white" placeholder="예: 플로우컴퍼니" />
+                            </div>
+                            <div>
+                                <label className="block font-bold mb-2 text-sm text-gray-500 uppercase">Email</label>
+                                <input type="email" value={inputs.email} onChange={(e) => handleInputChange('email', e.target.value)} 
+                                    className="w-full p-3 border-[3px] border-[#2d3436] rounded-lg text-lg font-bold focus:outline-none bg-white" placeholder="예: flow@example.com" />
+                            </div>
+                            <div>
+                                <label className="block font-bold mb-2 text-sm text-gray-500 uppercase">Phone</label>
+                                <input type="tel" value={inputs.phone} onChange={(e) => handleInputChange('phone', e.target.value)} 
+                                    className="w-full p-3 border-[3px] border-[#2d3436] rounded-lg text-lg font-bold focus:outline-none bg-white" placeholder="예: 010-1234-5678" />
+                            </div>
+                            <div className="mt-4 p-3 bg-white border-[3px] border-[#2d3436] rounded-lg text-xs font-bold text-gray-600">
+                                <label className="flex items-start gap-2 cursor-pointer">
+                                    <input type="checkbox" className="mt-1" checked={inputs.consent} onChange={(e) => setInputs({...inputs, consent: e.target.checked})} required />
+                                    <span>(필수) 개인정보 수집 및 이용에 동의합니다. 수집된 정보는 진단 결과 안내 및 교육 상담 목적으로만 사용됩니다.</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {/* QUIZ */}
                 {step === 'quiz' && (
                     <div className="max-w-xl mx-auto animate-fadeIn mt-4">
@@ -331,11 +371,11 @@ const LeadershipArchitect: React.FC<LeadershipArchitectProps> = ({ onClose }) =>
 
                 {/* RESULT (A4 Single Page) */}
                 {step === 'result' && result && (
-                    <div className="w-full flex justify-center pb-20">
+                    <div className="w-full flex justify-center pb-20 overflow-x-auto">
                          {/* Strict A4 Container: 595px width */}
                         <div 
                             id="leadership-blueprint-area" 
-                            className="bg-white w-[595px] min-h-[842px] border-[4px] border-[#2d3436] p-8 relative flex flex-col"
+                            className="bg-white w-[595px] min-w-[595px] min-h-[842px] border-[4px] border-[#2d3436] p-8 relative flex flex-col shrink-0"
                             style={{ backgroundImage: 'linear-gradient(#f0f0f0 1px, transparent 1px), linear-gradient(90deg, #f0f0f0 1px, transparent 1px)', backgroundSize: '20px 20px' }}
                         >
                              {/* Blueprint Header */}

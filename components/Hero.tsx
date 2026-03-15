@@ -37,25 +37,25 @@ const Hero: React.FC = () => {
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto" ref={revealRef}>
-        <div className="inline-block mb-8 animate-fadeIn">
-            <span className="py-1 px-4 border border-brand-pastelCyan/50 rounded-full text-brand-cyan dark:text-brand-pastelCyan text-sm md:text-base font-flow tracking-widest uppercase bg-brand-pastelCyan/20 backdrop-blur-sm">
-                Organizational Flow Designer
+        <div className="inline-block mb-6 animate-fadeIn">
+            <span className="py-2 px-6 border-2 border-brand-cyan/30 rounded-full text-brand-cyan text-sm md:text-base font-bold tracking-widest uppercase bg-brand-cyan/5 backdrop-blur-sm">
+                ORGANIZATIONAL FLOW DESIGNER
             </span>
         </div>
         
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 dark:text-white text-slate-900 leading-none tracking-tighter animate-fadeIn drop-shadow-2xl" style={{ animationDelay: '100ms' }}>
-          <span className="font-flow text-transparent bg-clip-text bg-gradient-to-r from-brand-pastelCyan via-brand-pastelBlue to-brand-pastelPurple dark:from-brand-cyan dark:via-brand-blue dark:to-brand-purple">FLOW~</span><br />
-          <span className="block text-3xl md:text-5xl lg:text-6xl mt-6 font-bold bg-clip-text text-transparent bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 dark:from-white dark:via-gray-200 dark:to-gray-400 pb-2 drop-shadow-lg" style={{ textShadow: '0px 4px 10px rgba(0,0,0,0.1)' }}>
-            조직의 잠재력을 깨우는<br className="md:hidden" /> 흐름 디자인
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 dark:text-white text-slate-900 leading-tight tracking-tighter animate-fadeIn drop-shadow-xl" style={{ animationDelay: '100ms' }}>
+          <span className="font-flow text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple">FLOW~</span><br />
+          <span className="block text-4xl md:text-6xl lg:text-7xl mt-4 font-black text-slate-800 dark:text-white pb-2 drop-shadow-md" style={{ letterSpacing: '-0.02em' }}>
+            사람과 일의 흐름을 디자인합니다
           </span>
         </h1>
         
-        <p className="dark:text-gray-200 text-slate-600 text-lg md:text-2xl font-medium max-w-3xl mx-auto mb-12 animate-fadeIn leading-relaxed" style={{ animationDelay: '200ms', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>
-          사람과 일의 본질에 집중하여, <br className="hidden md:block" />
-          <span className="text-brand-blue dark:text-brand-pastelBlue font-bold">조직과 개인의 성장</span>을 이끄는 최적의 솔루션을 설계합니다.
+        <p className="dark:text-gray-300 text-slate-600 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-12 animate-fadeIn leading-relaxed" style={{ animationDelay: '200ms' }}>
+          AI 시대, 기술이 아닌 <span className="text-brand-blue font-bold">사람과 일의 본질</span>에 집중합니다.<br className="hidden md:block" />
+          조직의 잠재력을 깨우는 최적의 흐름을 설계해 드립니다.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fadeIn" style={{ animationDelay: '300ms' }}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fadeIn" style={{ animationDelay: '300ms' }}>
           <a 
             href="#program" 
             onClick={(e) => scrollToSection(e, 'program')}
@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
             onClick={(e) => scrollToSection(e, 'contact')}
             onMouseMove={handleMagnetic}
             onMouseLeave={resetMagnetic}
-            className="w-full sm:w-auto text-center transition-transform duration-200 ease-out px-10 py-4 border-2 border-slate-300 dark:border-white/20 dark:text-white text-slate-700 font-bold text-lg rounded-full hover:bg-slate-100 dark:hover:bg-white/10 backdrop-blur-sm cursor-pointer"
+            className="w-full sm:w-auto text-center transition-transform duration-200 ease-out px-10 py-4 border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white text-slate-700 font-bold text-lg rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm cursor-pointer"
           >
             문의하기
           </a>

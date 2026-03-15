@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "A contact inquiry submitted by a user.",
+      "type": "object",
+      "properties": {
+        "company": { "type": "string" },
+        "name": { "type": "string" },
+        "contact": { "type": "string" },
+        "email": { "type": "string" },
+        "course": { "type": "string" },
+        "schedule": { "type": "string" },
+        "target": { "type": "string" },
+        "location": { "type": "string" },
+        "issues": { "type": "string" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["company", "name", "contact"]
+    },
+    "Diagnostic": {
+      "title": "Diagnostic",
+      "description": "A diagnostic result submitted by a user.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "company": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "answers": { "type": "object" },
+        "score": { "type": "number" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["name", "company", "email", "phone", "answers", "score"]
+    }
+  },
+  "firestore": {
+    "inquiries/{inquiryId}": {
+      "schema": { "$ref": "#/entities/Inquiry" },
+      "description": "Stores contact inquiries."
+    },
+    "diagnostics/{diagnosticId}": {
+      "schema": { "$ref": "#/entities/Diagnostic" },
+      "description": "Stores diagnostic results."
+    }
+  }
+}

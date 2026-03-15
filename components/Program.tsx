@@ -403,8 +403,9 @@ const Program: React.FC<ProgramProps> = ({ onInquire }) => {
                                                 </h3>
                                                 <div className="space-y-3 my-auto">
                                                     {detailData.effects && detailData.effects.map((effect, i) => {
-                                                        if (effect.includes('→')) {
-                                                            const [before, after] = effect.split('→').map(s => s.trim());
+                                                        if (effect.includes('→') || effect.includes('➔')) {
+                                                            const splitChar = effect.includes('➔') ? '➔' : '→';
+                                                            const [before, after] = effect.split(splitChar).map(s => s.trim().replace(/^\[Before\]\s*/i, '').replace(/^\[After\]\s*/i, ''));
                                                             return (
                                                                 <div key={i} className="flex flex-col gap-2.5 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-black/5">
                                                                     <div className="flex items-start gap-2.5 text-slate-500 dark:text-slate-400">

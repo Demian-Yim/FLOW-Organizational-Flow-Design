@@ -125,7 +125,7 @@ const LeadershipArchitect: React.FC<LeadershipArchitectProps> = ({ onClose }) =>
     setStep('loading');
     
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       const prompt = `
         당신은 세계적인 리더십 코치이자 조직 심리학자입니다. 
         사용자 정보: ${inputs.name} (소속: ${inputs.team}, 직책: ${inputs.job}, 경력: ${inputs.career})

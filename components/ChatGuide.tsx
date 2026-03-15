@@ -37,7 +37,7 @@ const ChatGuide: React.FC = () => {
   useEffect(() => {
     if (isOpen && !chatSession) {
       try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
         
         // Context Construction
         const programContext = PROGRAMS.map(p => `- [${p.category}] ${p.title}: ${p.desc}`).join('\n');

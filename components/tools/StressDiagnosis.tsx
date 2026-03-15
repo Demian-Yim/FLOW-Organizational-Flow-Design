@@ -69,7 +69,7 @@ const StressDiagnosis: React.FC<StressDiagnosisProps> = ({ onClose }) => {
     setStep('loading');
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       const prompt = `
         역할: 당신은 세계 최고의 심리 분석가이자 HR 조직문화 컨설턴트입니다.
         대상: ${inputs.name} (소속: ${inputs.team}, 직무: ${inputs.job}, 경력: ${inputs.career}차)
